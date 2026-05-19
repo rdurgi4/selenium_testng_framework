@@ -1,0 +1,22 @@
+# Credentials — never commit
+config.properties
+
+# Build output
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# Reports
+reports/*.html
+reports/*.xml
+
+# OS
+.DS_Store
+Thumbs.db
