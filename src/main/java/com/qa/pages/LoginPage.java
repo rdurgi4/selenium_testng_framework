@@ -13,12 +13,12 @@ public class LoginPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    // Locators — update these to match your actual application
+    // practicetestautomation.com/practice-test-login/
     private final By usernameField = By.id("username");
     private final By passwordField = By.id("password");
-    private final By loginButton   = By.id("login-button");
-    private final By errorMessage  = By.cssSelector(".error-message, [data-testid='error']");
-    private final By logoutLink    = By.cssSelector("[href='/logout'], [data-testid='logout']");
+    private final By loginButton   = By.id("submit");
+    private final By errorMessage  = By.id("error");
+    private final By logoutLink    = By.linkText("Log out");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -52,6 +52,8 @@ public class LoginPage {
 
     public boolean isLoginSuccessful() {
         try {
+            // Wait for redirect to success page then confirm logout link exists
+            wait.until(ExpectedConditions.urlContains("logged-in-successfully"));
             wait.until(ExpectedConditions.visibilityOfElementLocated(logoutLink));
             return true;
         } catch (Exception e) {
